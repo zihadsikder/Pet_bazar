@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/app/core/config/app_colors.dart';
 import 'package:flutter_game/app/core/constants/app_assets.dart';
-import 'package:flutter_game/app/modules/home/widgets/banner_carousel.dart';
+import 'package:flutter_game/app/modules/home/views/widgets/banner_carousel.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +10,7 @@ import '../../../core/widgets/circle_icon_button.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-   HomeView({Key? key}) : super(key: key);
+   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +23,27 @@ class HomeView extends GetView<HomeController> {
             searchTextField,
             const SizedBox(height: 16.0),
             const BannerCarousel(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: controller.categories.map((category) {
-                return GestureDetector(
-                  onTap: () => controller.selectCategory(category),
-                  child: Obx(() => Text(
-                    category,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: controller.selectedCategory.value == category
-                          ? Colors.blue
-                          : Colors.black,
-                    ),
-                  )),
-                );
-              }).toList(),
+            Container(
+              color: AppColors.primaryColor,
+              height: 36.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: controller.categories.map((category) {
+                  return GestureDetector(
+                    onTap: () => controller.selectCategory(category),
+                    child: Obx(() => Text(
+                      category,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: controller.selectedCategory.value == category
+                            ? AppColors.secondaryColor
+                            : Colors.black,
+                      ),
+                    )),
+                  );
+                }).toList(),
+              ),
             ),
             const SizedBox(height: 16.0),
             // Subcategory selection row based on selected main category
@@ -54,7 +58,7 @@ class HomeView extends GetView<HomeController> {
                     style: TextStyle(
                       fontSize: 14,
                       color: controller.selectedSubcategory.value == subcategory
-                          ? Colors.blue
+                          ? AppColors.secondaryColor
                           : Colors.black,
                     ),
                   ),
@@ -81,7 +85,7 @@ class HomeView extends GetView<HomeController> {
             decoration: InputDecoration(
               hintText: 'search',
               filled: true,
-              fillColor: AppColors.textFieldOutlineColor,
+              fillColor: AppColors.primaryColor,
               prefixIcon: Icon(
                 Icons.search_outlined,
                 color: AppColors.iconColor,

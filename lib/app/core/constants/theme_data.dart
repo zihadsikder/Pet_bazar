@@ -5,11 +5,11 @@ import '../config/app_text_style.dart';
 
 class AppThemeData {
   static ThemeData lightThemeData = ThemeData(
-    // primaryColor: const Color(0xffc5c7c5),
-    // primarySwatch: Colors.grey,
+     primaryColor: const Color(0xfff4f3f3),
+     primarySwatch: Colors.grey,
 
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.bgColor,
+      backgroundColor: Colors.white,
       titleTextStyle: AppTextStyle.headerStyle(),
     ),
 

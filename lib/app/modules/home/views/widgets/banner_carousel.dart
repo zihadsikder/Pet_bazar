@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/config/app_colors.dart';
+import '../../../../core/config/app_colors.dart';
 
 class BannerCarousel extends StatefulWidget {
   const BannerCarousel({
@@ -38,7 +38,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 1.0),
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color: AppColors.secondaryColor,
                         borderRadius: BorderRadius.circular(8)
                     ),
                     alignment: Alignment.center,
@@ -49,29 +49,29 @@ class _BannerCarouselState extends State<BannerCarousel> {
           }).toList(),
         ),
         const SizedBox(height: 6,),
-        ValueListenableBuilder(
-            valueListenable: _currentIndex,
-            builder: (context, index, _) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (int i = 0; i < 5; i++)
-                    Container(
-                      height: 12,
-                      width: 12,
-                      margin: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                          color: i == index ? AppColors.primaryColor : Colors.transparent,
-                          border: Border.all(
-                            color: i == index ? AppColors.primaryColor : Colors.grey.shade400,
-                          ),
-                          borderRadius: BorderRadius.circular(30)
-                      ),
-                    ),
-                ],
-              );
-            }
-        )
+        // ValueListenableBuilder(
+        //     valueListenable: _currentIndex,
+        //     builder: (context, index, _) {
+        //       return Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         children: [
+        //           for (int i = 0; i < 5; i++)
+        //             Container(
+        //               height: 12,
+        //               width: 12,
+        //               margin: const EdgeInsets.all(2),
+        //               decoration: BoxDecoration(
+        //                   color: i == index ? AppColors.primaryColor : Colors.transparent,
+        //                   border: Border.all(
+        //                     color: i == index ? AppColors.primaryColor : Colors.grey.shade400,
+        //                   ),
+        //                   borderRadius: BorderRadius.circular(30)
+        //               ),
+        //             ),
+        //         ],
+        //       );
+        //     }
+        // )
       ],
     );
   }
